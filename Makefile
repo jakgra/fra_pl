@@ -1,8 +1,8 @@
 NAME = libfra_pl.so
 
-ADD_CFLAGS := $(shell cat ADD_CFLAGS)
+FRA_PATH := $(shell cat FRA_PATH)
 
-COMPILER_OPTIONS :=  -Wall -Wextra -pedantic -std=gnu99 -DJSMN_PARENT_LINKS -DJSMN_STRICT -DJJP_LOG $(ADD_CFLAGS)
+COMPILER_OPTIONS :=  -Wall -Wextra -pedantic -std=gnu99 -DJSMN_PARENT_LINKS -DJSMN_STRICT -DJJP_LOG
 
 ORIGI_CFLAGS := $(CFLAGS) $(ADD_CFLAGS)
 CFLAGS = $(ORIGI_CFLAGS) -Os $(COMPILER_OPTIONS) -DNDEBUG $(INCLUDE_DIRS) $(OPTFLAGS)
@@ -11,7 +11,7 @@ LDLIBS = $(OPTSLIBS)
 BUILD_DIR = build
 
 
-INCLUDE_DIRS = -Iinclude -Ilibs/bstrlib -Ilibs/jsmn -Ilibs/jsmn-jsonpath
+INCLUDE_DIRS = -Iinclude -Ilibs/bstrlib -Ilibs/jsmn -Ilibs/jsmn-jsonpath -I$(FRA_PATH)/include -L$(FRA_PATH)/build
 LDLIBS += -lfcgi -lcurl -lmysqlclient -lfra
 
 SOURCES = $(wildcard src/**/**/*.c src/**/**/*.c src/**/*.c src/*.c)
