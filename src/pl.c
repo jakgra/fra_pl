@@ -37,6 +37,7 @@ final_cleanup:
 
 // global functions
 
+/*
 int fra_pl_init( int argc, char * * argv ) {
 
 	int rc;
@@ -59,8 +60,16 @@ final_cleanup:
 	return -1;
 
 }
+*/
 
-int fra_pl_install( char * name ) {
+int fra_pl_update( char * dir ) {
+
+	bstring repos_dir_str;
+	DIR * repos_dir;
+
+
+	repos_dir_str = bformat( "%s/repos", dir );
+	repos_dir = opendir( bdata( repos_dir_str ) );
 
 
 
